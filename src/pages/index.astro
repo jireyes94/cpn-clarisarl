@@ -1,11 +1,322 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const WHATSAPP_NUMBER = "54911XXXXXXXX"; 
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Clarisa!%20Vi%20tu%20web%20y%20me%20gustar%C3%ADa%20consultarte%20por%20tus%20servicios.`;
+
+const services = [
+	{
+		title: "Gestión Impositiva y Fiscal",
+		description: "Tranquilidad total en tus obligaciones. Altas de Monotributo, declaraciones de Ganancias, Bienes Personales y planificación para optimizar tu carga tributaria.",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>`,
+		details: ["Inscripciones AFIP/ARBA", "Recategorizaciones", "Liquidación mensual"]
+	},
+	{
+		title: "Consultoría Financiera",
+		description: "Hacé que tu dinero trabaje para vos. Análisis de flujos de fondos, armado de presupuestos personales y estrategias de inversión según tu perfil.",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>`,
+		details: ["Control de gastos", "Planificación de ahorro", "Educación financiera"]
+	},
+	{
+		title: "Servicios para ONGs y Empresas",
+		description: "Especialista en auditoría y tesorería institucional. Certificaciones de ingresos, balances profesionales y reportes de transparencia administrativa.",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>`,
+		details: ["Balances y Auditorías", "Certificaciones contables", "Gestión de Tesorería"]
+	}
+];
+
+const faqs = [
+	{
+		q: "¿Cómo es la modalidad de trabajo?",
+		a: "Trabajamos de forma 100% digital. Iniciamos con una consulta via WhatsApp o videollamada para diagnosticar tu situación y luego gestionamos todo de manera remota con reportes periódicos."
+	},
+	{
+		q: "¿Realizás certificaciones de ingresos?",
+		a: "Sí, como Contadora Pública matriculada emito certificaciones de ingresos para bancos, alquileres o trámites oficiales, con la firma certificada ante el Consejo Profesional correspondiente."
+	},
+	{
+		q: "¿Hacés planeamiento para nuevas inversiones?",
+		a: "Exactamente. Analizamos tu capacidad de ahorro real y te ayudo a entender las mejores opciones del mercado (CEDEARs, MEP, Fondos) para proteger tu capital contra la inflación."
+	},
+	{
+		q: "¿Atendés a clientes de todo el país?",
+		a: "Sí. Gracias a la digitalización de los sistemas de AFIP y organismos provinciales, puedo llevar la contabilidad de clientes en cualquier punto de Argentina."
+	},
+	{
+		q: "¿Qué documentación necesito para empezar?",
+		a: "Para la primera asesoría solo tus dudas. Si es para gestión impositiva, necesitaremos tu CUIT y Clave Fiscal (que manejamos con total confidencialidad y ética profesional)."
+	},
+	{
+		q: "¿Cuál es el costo de los servicios?",
+		a: "Los honorarios se ajustan a la complejidad de cada caso. Ofrezco abonos mensuales para gestión continua o presupuestos por trámites puntuales."
+	}
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+	title="Clarisa Reyes | Contabilidad Estratégica & Finanzas"
+	description="De la Tesorería Pública a tu economía personal. Clarisa Reyes te brinda la seguridad técnica que tus finanzas necesitan."
+>
+	<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100/50">
+		<div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+			<div class="font-bold text-2xl tracking-tighter text-slate-900">
+				clarisareyes<span class="text-emerald-600">.finanzas</span>
+			</div>
+			<div class="hidden md:flex gap-8 items-center font-medium text-slate-600">
+				<a href="#servicios" class="hover:text-emerald-600 transition-colors">Servicios</a>
+				<a href="#sobre-mi" class="hover:text-emerald-600 transition-colors">Sobre mí</a>
+				<a href="#faq" class="hover:text-emerald-600 transition-colors">Consultas</a>
+				<a href={WHATSAPP_LINK} class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200">
+					WhatsApp Business
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<main>
+		<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[#F8FAFC]">
+			<div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-6">
+						<span class="relative flex h-2 w-2">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+						</span>
+						Disponible para nuevos clientes
+					</div>
+					<h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-8">
+						Tu contabilidad, <br/><span class="text-emerald-600">bajo control técnico.</span>
+					</h1>
+					<p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-xl">
+						Jefa de Tesorería con visión estratégica. Transformo la complejidad de tus impuestos en una estructura financiera sólida y eficiente.
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4">
+						<a href={WHATSAPP_LINK} class="flex items-center justify-center px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-200 group overflow-hidden">
+						    Iniciar Asesoría 
+						    <svg 
+						        xmlns="http://www.w3.org/2000/svg" 
+						        class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+						        fill="none" 
+						        viewBox="0 0 24 24" 
+						        stroke="currentColor" 
+						        stroke-width="3"
+						    >
+						        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+						    </svg>
+						</a>
+						<a href="#servicios" class="flex items-center justify-center px-8 py-4 bg-white border-2 border-slate-100 text-slate-900 rounded-2xl font-bold text-lg hover:border-emerald-200 transition-all">
+							Ver Servicios
+						</a>
+					</div>
+				</div>
+				<div class="relative">
+					<div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-[12px] border-white bg-slate-200">
+						<img 
+							src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop" 
+							alt="Clarisa Reyes Profesional" 
+							class="w-full h-full object-cover"
+						/>
+					</div>
+					<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+						<div class="flex items-center gap-4">
+							<div class="bg-emerald-100 p-3 rounded-xl text-emerald-600 text-2xl font-bold">10+</div>
+							<div class="text-sm font-bold text-slate-800 leading-tight">Años de <br/>Experiencia</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="servicios" class="py-24 bg-white">
+			<div class="max-w-7xl mx-auto px-6 lg:px-8">
+				<div class="text-center max-w-3xl mx-auto mb-20">
+					<h2 class="text-4xl font-bold text-slate-900 mb-6 font-display">Asesoría Integral</h2>
+					<p class="text-lg text-slate-600">Soluciones técnicas diseñadas para el contexto económico actual. Orden, transparencia y ahorro fiscal.</p>
+				</div>
+				<div class="grid md:grid-cols-3 gap-8">
+					{services.map(s => (
+						<div class="p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-100 transition-all duration-500 group">
+							<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-emerald-600 shadow-sm mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300" set:html={s.icon} />
+							<h3 class="text-2xl font-bold text-slate-900 mb-4">{s.title}</h3>
+							<p class="text-slate-600 mb-8 leading-relaxed">{s.description}</p>
+							<ul class="space-y-3">
+								{s.details.map(d => (
+									<li class="flex items-center text-sm font-medium text-slate-500">
+										<svg class="w-4 h-4 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+										{d}
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="sobre-mi" class="py-24 bg-white">
+		    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+		        <div class="lg:grid lg:grid-cols-2 gap-20 items-center">
+				
+		            <div class="space-y-8">
+		                <div>
+		                    <h2 class="text-4xl font-bold text-slate-900 leading-tight mb-6">
+		                        Solidez técnica en <br/>
+		                        <span class="text-emerald-600">gestión financiera.</span>
+		                    </h2>
+		                    <p class="text-lg text-slate-600 leading-relaxed">
+		                        Soy Clarisa Reyes. Mi enfoque no es solo "liquidar impuestos", sino construir una estrategia que te brinde paz mental. Mi rol como <strong>Jefa de Tesorería en OPISU</strong> me permite gestionar la complejidad con un rigor que hoy traslado a cada uno de mis clientes.
+		                    </p>
+		                </div>
+					
+		                <div class="space-y-4">
+		                    <div class="flex items-center gap-5 p-6 bg-slate-50 rounded-2xl border-l-4 border-emerald-600 shadow-sm transition-all hover:bg-slate-100/50">
+		                        <div class="text-emerald-600">
+		                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+		                        </div>
+		                        <div>
+		                            <h4 class="font-bold text-slate-900">Gestión de Fondos Públicos</h4>
+		                            <p class="text-slate-500 text-sm italic">Experiencia avanzada en tesorería técnica y auditoría.</p>
+		                        </div>
+		                    </div>
+						
+		                    <div class="flex items-center gap-5 p-6 bg-slate-50 rounded-2xl border-l-4 border-slate-800 shadow-sm transition-all hover:bg-slate-100/50">
+		                        <div class="text-slate-800">
+		                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+		                        </div>
+		                        <div>
+		                            <h4 class="font-bold text-slate-900">Contadora Pública (UBA)</h4>
+		                            <p class="text-slate-500 text-sm italic">Especialización en mercados de capitales y normativa fiscal.</p>
+		                        </div>
+		                    </div>
+		                </div>
+					
+		                <div class="flex items-center gap-6 pt-4">
+		                    <a href={WHATSAPP_LINK} class="text-emerald-600 font-bold flex items-center gap-2 hover:underline decoration-2 underline-offset-4">
+		                        Consultar mi matrícula profesional
+		                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+		                    </a>
+		                </div>
+		            </div>
+				
+		            <div class="relative mt-12 lg:mt-0 px-4 sm:px-12">
+		                <div class="absolute inset-0 bg-emerald-50 rounded-full blur-3xl opacity-30 transform -translate-y-10"></div>
+		                <div class="relative">
+		                    <div class="rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl shadow-slate-200">
+		                        <img 
+		                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop" 
+		                            alt="Clarisa Reyes Profesional" 
+		                            class="w-full h-[550px] object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+		                        />
+		                    </div>
+		                    <div class="absolute -bottom-6 -right-2 bg-slate-900 text-white p-6 rounded-2xl shadow-xl">
+		                        <p class="text-xs uppercase tracking-widest font-bold text-emerald-400 mb-1">Status</p>
+		                        <p class="text-sm font-medium">Contadora Matriculada</p>
+		                    </div>
+		                </div>
+		            </div>
+				
+		        </div>
+		    </div>
+		</section>
+
+		<section id="faq" class="py-24 bg-[#F8FAFC]">
+		    <div class="max-w-3xl mx-auto px-6">
+		        <div class="text-center mb-12">
+		            <h2 class="text-4xl font-bold text-slate-900 mb-4">Centro de Consultas</h2>
+		            <p class="text-slate-500 font-medium">Seleccioná tu duda para obtener una respuesta inmediata</p>
+		        </div>
+			
+		        <div class="bg-white border border-slate-200 rounded-[2rem] p-8 shadow-xl shadow-slate-200/50">
+		            <div class="space-y-6">
+		                <div class="relative">
+		                    <label for="faq-select" class="block text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 ml-1">
+		                        ¿En qué puedo ayudarte?
+		                    </label>
+		                    <select 
+		                        id="faq-select" 
+		                        class="w-full bg-slate-50 border-2 border-slate-100 text-slate-800 text-lg font-bold rounded-2xl p-5 outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100 transition-all appearance-none cursor-pointer"
+		                    >
+		                        {faqs.map((item, index) => (
+		                            <option value={index}>{item.q}</option>
+		                        ))}
+		                    </select>
+		                    <div class="absolute right-5 bottom-5 pointer-events-none text-slate-400">
+		                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+		                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+		                        </svg>
+		                    </div>
+		                </div>
+					
+		                <div class="bg-emerald-50/50 rounded-2xl p-8 border border-emerald-100/50 min-h-[150px] flex items-center">
+		                    <p id="faq-answer" class="text-slate-700 text-lg leading-relaxed font-medium animate-fadeIn">
+		                        {faqs[0].a}
+		                    </p>
+		                </div>
+					
+		                <div class="pt-4 flex justify-center">
+		                    <a href={WHATSAPP_LINK} class="text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-colors">
+		                        ¿Tu duda no está aquí? Consultame por WhatsApp
+		                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+		                    </a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</section>
+
+		<script define:vars={{ faqs }}>
+		    const select = document.getElementById('faq-select');
+		    const answerDisplay = document.getElementById('faq-answer');
+		
+		    select.addEventListener('change', (e) => {
+		        const index = e.target.value;
+			
+		        // Efecto de transición simple
+		        answerDisplay.style.opacity = '0';
+			
+		        setTimeout(() => {
+		            answerDisplay.textContent = faqs[index].a;
+		            answerDisplay.style.opacity = '1';
+		        }, 150);
+		    });
+		</script>
+
+		<style>
+		    #faq-answer {
+		        transition: opacity 0.2s ease-in-out;
+		    }
+		    @keyframes fadeIn {
+		        from { opacity: 0; transform: translateY(5px); }
+		        to { opacity: 1; transform: translateY(0); }
+		    }
+		    .animate-fadeIn {
+		        animation: fadeIn 0.4s ease-out;
+		    }
+		</style>
+	</main>
+
+	<footer class="bg-slate-950 text-white pt-20 pb-10">
+		<div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 border-b border-slate-800 pb-12 mb-10">
+			<div>
+				<div class="text-2xl font-bold mb-6 italic">clarisareyes<span class="text-emerald-500">.finanzas</span></div>
+				<p class="text-slate-400 max-w-sm">Acompañando tu crecimiento con solidez técnica y compromiso profesional.</p>
+			</div>
+			<div class="flex flex-col md:items-end gap-6">
+				<div class="text-lg font-bold">Contacto Directo</div>
+				<a href={WHATSAPP_LINK} class="text-emerald-400 text-2xl font-medium hover:underline tracking-tight">
+					+54 9 11 XXXX-XXXX
+				</a>
+				<div class="text-slate-500 text-sm">Buenos Aires, Argentina | Atención Remota</div>
+			</div>
+		</div>
+		<div class="text-center text-slate-600 text-xs tracking-widest uppercase font-medium">
+			© 2026 Clarisa Reyes. Matrícula CPCECABA T°XX F°XX.
+		</div>
+	</footer>
+
+	<a href={WHATSAPP_LINK} target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 animate-bounce">
+		<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+			<path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.06 3.973L0 16l4.204-1.102a7.934 7.934 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+		</svg>
+	</a>
 </Layout>
