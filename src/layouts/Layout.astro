@@ -1,9 +1,9 @@
 ---
+// src/layouts/Layout.astro
 interface Props {
 	title: string;
 	description: string;
 }
-
 const { title, description } = Astro.props;
 ---
 
@@ -13,25 +13,25 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-white font-['Inter'] text-slate-900 antialiased">
+	<body class="bg-brand-cream font-sans text-brand-olive antialiased">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-	:root {
-		--mint-light: #f0fdf4;
-		--mint-primary: #10b981;
-		--mint-dark: #065f46;
-	}
-	body {
-		overflow-x: hidden;
-	}
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	/* Mantén tus estilos de scrollbar si quieres, pero Tailwind ya maneja lo demás */
+	::-webkit-scrollbar { width: 8px; }
+	::-webkit-scrollbar-track { background: #F7F5F2; }
+	::-webkit-scrollbar-thumb { background: #2F4F4F; border-radius: 10px; }
 </style>
