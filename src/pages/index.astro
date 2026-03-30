@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const WHATSAPP_NUMBER = "54911XXXXXXXX"; 
+const WHATSAPP_NUMBER = "5492215796985"; 
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Clarisa!%20Vi%20tu%20web%20y%20me%20gustar%C3%ADa%20consultarte%20por%20tus%20servicios.`;
 
 const services = [
@@ -28,7 +28,7 @@ const services = [
 const faqs = [
     {
         q: "¿Cómo es la modalidad de trabajo?",
-        a: "Trabajamos de forma 100% digital. Iniciamos con una consulta via WhatsApp o videollamada para diagnosticar tu situación y luego gestionamos todo de manera remota con reportes periódicos."
+        a: "El servicio que presto es 100% digital. La asesoría se agenda vía whatsapp o videollamada para diagnosticar tu situación, proponerte los pasos a seguir y en función de ello enviarte los reportes periódicos."
     },
     {
         q: "¿Realizás certificaciones de ingresos?",
@@ -36,19 +36,15 @@ const faqs = [
     },
     {
         q: "¿Hacés planeamiento para nuevas inversiones?",
-        a: "Exactamente. Analizamos tu capacidad de ahorro real y te ayudo a entender las mejores opciones del mercado (CEDEARs, MEP, Fondos) para proteger tu capital contra la inflación."
-    },
-    {
-        q: "¿Atendés a clientes de todo el país?",
-        a: "Sí. Gracias a la digitalización de los sistemas de AFIP y organismos provinciales, puedo llevar la contabilidad de clientes en cualquier punto de Argentina."
+        a: "Claro, hago un análisis de tus ingresos, gastos y tu capacidad de ahorro a través de un perfil de inversor para evaluar las mejores opciones según tus objetivos."
     },
     {
         q: "¿Qué documentación necesito para empezar?",
-        a: "Para la primera asesoría solo tus dudas. Si es para gestión impositiva, necesitaremos tu CUIT y Clave Fiscal (que manejamos con total confidencialidad y ética profesional)."
+        a: "Para la primer asesoría solo tus dudas. Tene en cuenta que si ya sos contribuyente de ARCA tenes que tener claro cuál es tu CUIT y clave fiscal, que es personal e intransferible. Si no la tenes, te ayudo a gestionarla o recuperarla. "
     },
     {
         q: "¿Cuál es el costo de los servicios?",
-        a: "Los honorarios se ajustan a la complejidad de cada caso. Ofrezco abonos mensuales para gestión continua o presupuestos por trámites puntuales."
+        a: "Los honorarios se presupuestan en función del trabajo a realizar y son de acuerdo a lo establecido por los Consejos Profesionales, se facturan y abonan por transferencia bancaria o billetera virtual. "
     }
 ];
 ---
@@ -57,16 +53,22 @@ const faqs = [
     title="Clarisa Reyes | Contabilidad Estratégica & Finanzas"
     description="De la Tesorería Pública a tu economía personal. Clarisa Reyes te brinda la seguridad técnica que tus finanzas necesitan."
 >
-    <nav class="fixed w-full z-50 bg-brand-cream/95 backdrop-blur-md border-b border-brand-sand">
+    <nav class="fixed w-full z-50 bg-brand-olive backdrop-blur-md border-b border-brand-sand">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="font-display font-bold text-2xl tracking-tight text-brand-olive">
-                clarisareyes<span class="text-brand-gold">.finanzas</span>
-            </div>
-            <div class="hidden md:flex gap-8 items-center font-sans font-medium text-brand-olive/80">
+            <div class="flex items-center gap-3">
+    <img src="/images/logo_letras.png" alt="Logo Clarisa Reyes" class="h-12 w-12 object-contain" />
+    <div class="font-display font-bold text-xl tracking-tight text-brand-cream leading-none">
+        Clarisa Reyes
+        <span class="text-brand-gold/80 block text-[10px] uppercase tracking-[0.2em] mt-1 font-sans">
+                            Impuestos & Finanzas
+                        </span>
+    </div>
+</div>
+            <div class="hidden md:flex gap-8 items-center font-sans font-medium text-brand-cream/90">
                 <a href="#servicios" class="hover:text-brand-gold transition-colors">Servicios</a>
                 <a href="#sobre-mi" class="hover:text-brand-gold transition-colors">Sobre mí</a>
                 <a href="#faq" class="hover:text-brand-gold transition-colors">Consultas</a>
-                <a href={WHATSAPP_LINK} class="bg-brand-olive text-brand-cream px-6 py-2.5 rounded-full hover:bg-brand-gold transition-all shadow-lg shadow-brand-olive/20 font-sans">
+                <a href={WHATSAPP_LINK} target="_blank" class="bg-brand-olive text-brand-cream px-6 py-2.5 rounded-full hover:bg-brand-gold transition-all shadow-lg shadow-brand-olive/20 font-sans">
                     Agendar asesoría
                 </a>
             </div>
@@ -99,7 +101,7 @@ const faqs = [
 					    </ul>
 					</div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href={WHATSAPP_LINK} class="flex items-center justify-center px-8 py-4 bg-brand-gold text-white rounded-2xl font-sans font-bold text-lg hover:bg-brand-olive transition-all shadow-xl shadow-brand-gold/20 hover:shadow-brand-olive/20 overflow-hidden">
+                        <a href={WHATSAPP_LINK} target="_blank" class="flex items-center justify-center px-8 py-4 bg-brand-gold text-white rounded-2xl font-sans font-bold text-lg hover:bg-brand-olive transition-all shadow-xl shadow-brand-gold/20 hover:shadow-brand-olive/20 overflow-hidden">
                             Agendar asesoría 
                             <svg 
                                 xmlns="http://www.w3.org/2000/svg" 
@@ -147,14 +149,6 @@ const faqs = [
                             <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand-gold shadow-sm mb-6 group-hover:bg-brand-gold group-hover:text-white transition-all duration-300" set:html={s.icon} />
                             <h3 class="font-display text-2xl font-bold text-brand-olive mb-4">{s.title}</h3>
                             <p class="font-sans text-brand-olive/80 mb-8 leading-relaxed">{s.description}</p>
-                            <ul class="space-y-3">
-                                {s.details.map(d => (
-                                    <li class="flex items-center text-sm font-sans font-medium text-brand-olive/70">
-                                        <svg class="w-4 h-4 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                                        {d}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     ))}
                 </div>
@@ -207,7 +201,7 @@ const faqs = [
                         <div class="relative">
                             <div class="rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl shadow-brand-sand/50">
                                 <img 
-                                    src="/images/clarisa.jpeg"
+                                    src="/images/clarisa2.jpg"
                                     alt="Clarisa Reyes Profesional" 
                                     class="w-full h-[550px] object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
                                 />
@@ -254,7 +248,7 @@ const faqs = [
                         </div>
                     
                         <div class="pt-4 flex justify-center">
-                            <a href={WHATSAPP_LINK} class="font-sans text-sm font-bold text-brand-gold hover:text-brand-olive flex items-center gap-2 transition-colors">
+                            <a href={WHATSAPP_LINK} target="_blank" class="font-sans text-sm font-bold text-brand-gold hover:text-brand-olive flex items-center gap-2 transition-colors">
                                 ¿Tu duda no está aquí? Consultame por WhatsApp
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                             </a>
@@ -294,24 +288,49 @@ const faqs = [
         </style>
     </main>
 
-    <footer class="bg-brand-olive text-brand-cream pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 border-b border-brand-sand/20 pb-12 mb-10">
-            <div>
-                <div class="font-display text-2xl font-bold mb-6 italic">clarisareyes<span class="text-brand-gold">.finanzas</span></div>
-                <p class="font-sans text-brand-cream/70 max-w-sm">Acompañando tu crecimiento con solidez técnica y compromiso profesional.</p>
+<footer class="bg-brand-olive text-brand-cream pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-10 items-start border-b border-brand-sand/10 pb-10 mb-8">
+            
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <img src="/images/logo_letras.png" alt="Logo Clarisa Reyes" class="h-14 w-14 object-contain" />
+                    <div class="font-display font-bold text-xl tracking-tight text-brand-cream leading-tight">
+                        Clarisa Reyes
+                        <span class="text-brand-gold/80 block text-[10px] uppercase tracking-[0.2em] mt-1 font-sans">
+                            Impuestos & Finanzas
+                        </span>
+                    </div>
+                </div>
+                <p class="font-sans text-brand-cream/60 max-w-xs text-sm leading-relaxed">
+                    Acompañando tu crecimiento con solidez técnica y compromiso profesional.
+                </p>
             </div>
-            <div class="flex flex-col md:items-end gap-6">
-                <div class="font-sans text-lg font-bold">Contacto Directo</div>
-                <a href={WHATSAPP_LINK} class="text-brand-gold text-2xl font-sans font-medium hover:text-white transition-colors tracking-tight">
-                    +54 9 11 XXXX-XXXX
+
+            <div class="flex flex-col md:items-end gap-2 md:mt-2">
+                <span class="font-sans text-[11px] font-bold uppercase tracking-[0.15em] text-brand-cream/50">
+                    Contacto Directo
+                </span>
+            
+                <a href={WHATSAPP_LINK} target="_blank" 
+                   class="group flex items-center gap-3 text-brand-gold text-2xl font-sans font-bold hover:text-white transition-all duration-300 tracking-tight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="transition-transform group-hover:scale-110">
+                        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.06 3.973L0 16l4.204-1.102a7.934 7.934 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/>
+                    </svg>
+                    Contáctame ahora
                 </a>
-                <div class="font-sans text-brand-cream/50 text-sm">Buenos Aires, Argentina | Atención Remota</div>
+            
+                <p class="font-sans text-brand-cream/40 text-[10px] uppercase tracking-wider md:text-right">
+                    Buenos Aires, Argentina <span class="mx-1 text-brand-gold/20">|</span> Atención Remota
+                </p>
             </div>
         </div>
-        <div class="text-center font-sans text-brand-cream/40 text-xs tracking-widest font-medium">
+
+        <div class="text-center font-sans text-brand-cream/20 text-[9px] tracking-[0.3em] uppercase">
             © 2026 Clarisa Reyes Lima. Todos los derechos reservados.
         </div>
-    </footer>
+    </div>
+</footer>
 
     <a href={WHATSAPP_LINK} target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 animate-bounce">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
